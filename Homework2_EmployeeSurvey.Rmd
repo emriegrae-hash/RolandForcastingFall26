@@ -1,0 +1,71 @@
+---
+title: "Homework2_EmployeeSurvey"
+author: "Roland"
+date: "2026-09-26"
+output: html_document
+---
+
+## Typical_Employee_Survey_Data
+
+## Load Data
+
+```{r}
+library(readxl)
+Employee_Survey_Data <- read_excel("Typical_Employee_Survey_Data.xlsx", col_names = TRUE)
+names(Employee_Survey_Data) <- c("A1","A2","A3","A4","A5","A6","A7","A8","A9","A10","A11")
+```
+
+## Assignment #1: Summary and Boxplots
+
+```{r}
+summary(Employee_Survey_Data$A1)
+boxplot(Employee_Survey_Data$A1, main = "Boxplot of A1")
+
+summary(Employee_Survey_Data$A5)
+boxplot(Employee_Survey_Data$A5, main = "Boxplot of A5")
+```
+
+## Assignment #2: Convert to Factors
+
+```{r}
+Employee_Survey_Data$A2  <- as.factor(Employee_Survey_Data$A2)
+Employee_Survey_Data$A3  <- as.factor(Employee_Survey_Data$A3)
+Employee_Survey_Data$A4  <- as.factor(Employee_Survey_Data$A4)
+Employee_Survey_Data$A6  <- as.factor(Employee_Survey_Data$A6)
+Employee_Survey_Data$A7  <- as.factor(Employee_Survey_Data$A7)
+Employee_Survey_Data$A8  <- as.factor(Employee_Survey_Data$A8)
+Employee_Survey_Data$A9  <- as.factor(Employee_Survey_Data$A9)
+Employee_Survey_Data$A10 <- as.factor(Employee_Survey_Data$A10)
+Employee_Survey_Data$A11 <- as.factor(Employee_Survey_Data$A11)
+
+str(Employee_Survey_Data)
+```
+
+## Assignment #3: Right Visual for Each Column
+
+```{r}
+# Numeric columns -> histogram
+hist(Employee_Survey_Data$A1, main = "Histogram of A1", xlab = "A1")
+hist(Employee_Survey_Data$A5, main = "Histogram of A5", xlab = "A5")
+
+# Categorical columns -> bar chart of counts
+barplot(table(Employee_Survey_Data$A2),  main = "Bar chart of A2")
+barplot(table(Employee_Survey_Data$A3),  main = "Bar chart of A3")
+barplot(table(Employee_Survey_Data$A4),  main = "Bar chart of A4")
+barplot(table(Employee_Survey_Data$A6),  main = "Bar chart of A6")
+barplot(table(Employee_Survey_Data$A7),  main = "Bar chart of A7")
+barplot(table(Employee_Survey_Data$A8),  main = "Bar chart of A8")
+barplot(table(Employee_Survey_Data$A9),  main = "Bar chart of A9")
+barplot(table(Employee_Survey_Data$A10), main = "Bar chart of A10")
+barplot(table(Employee_Survey_Data$A11), main = "Bar chart of A11")
+```
+
+## Assignment #4: Scatter Plots / Relationships
+
+```{r}
+plot(Employee_Survey_Data$A1, Employee_Survey_Data$A5,
+     main = "A1 vs A5", xlab = "A1 (Age)", ylab = "A5")
+
+boxplot(Employee_Survey_Data$A1 ~ Employee_Survey_Data$A2,
+        main = "A1 by A2", xlab = "A2", ylab = "A1")
+```
